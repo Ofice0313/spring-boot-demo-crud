@@ -20,8 +20,20 @@ public class CruddemoApplication{
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 
 		return runner -> {
-			queryForStudents(studentDAO);
+			//queryForStudents(studentDAO);
+
+			queryForStudentsByLastName(studentDAO);
 		};
+	}
+
+	private void queryForStudentsByLastName(StudentDAO studentDAO) {
+		//get a list of students
+		List<Student> students = studentDAO.findByLastName("Simbine");
+
+		// display list of students
+		for(Student student: students) {
+			System.out.println(student);
+		}
 	}
 
 	private void queryForStudents(StudentDAO studentDAO) {
