@@ -20,8 +20,15 @@ public class CruddemoApplication{
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 
 		return runner -> {
-			deleteStudent(studentDAO);
+			createMultipleStudents(studentDAO);
 		};
+	}
+
+	private void deleteAllStudent(StudentDAO studentDAO) {
+
+		System.out.println("Deleting all students");
+		int numRowsDeleted = studentDAO.deleteAll();
+		System.out.println("Deleted row count: " + numRowsDeleted);
 	}
 
 	private void deleteStudent(StudentDAO studentDAO) {
